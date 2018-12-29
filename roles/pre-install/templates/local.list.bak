@@ -1,0 +1,3 @@
+#ubuntu：
+deb http://{{ local_source }}/neunn_stack/ packs/
+

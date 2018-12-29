@@ -1,0 +1,36 @@
+# Mgmt network
+auto eth0
+iface eth0 inet static
+address {{ eth0 }}
+netmask 255.255.0.0
+gateway 10.2.254.254
+dns-nameservers 114.114.114.114 8.8.4.4
+#dns-nameservers 218.25.103.242
+
+# Private network
+auto eth1
+iface eth1 inet static
+address {{ eth1 }}
+netmask 255.255.0.0
+
+
+# Storage network
+auto eth4
+iface eth4 inet static
+address {{ eth4 }}
+netmask 255.255.0.0
+
+auto eth4:1
+iface eth4:1 inet static
+address {{ eth4_1 }}
+netmask 255.255.0.0
+auto eth4:2
+iface eth4:2 inet static
+address {{ eth4_2 }}
+netmask 255.255.0.0
+
+auto eth4:3
+iface eth4:3 inet static
+address {{ eth4_3 }}
+netmask 255.255.0.0
+source /etc/network/interfaces.d/*.cfg

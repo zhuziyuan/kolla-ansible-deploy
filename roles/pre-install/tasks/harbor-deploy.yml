@@ -1,0 +1,58 @@
+---
+#######################
+# INSTALL Docker-compose 
+#######################
+- name: update neunn_localopenstack_release
+  template: src=local.list dest=/etc/apt/sources.list
+
+- name: update resolv.conf
+  shell: echo 'nameserver {{ dns_ip }}' > /etc/resolv.conf
+
+- name: update ali cache
+  apt: update_cache=yes
+  ignore_errors: true
+
+- name: install python-pip package
+  apt: name={{ item }} state=present force=yes
+  with_items:
+    - python-pip
+
+- name: shutdown ufw
+  shell: ufw disable
+
+- name: mkdir /root/.pip
+  file: path=/root/.pip state=directory
+
+- name: update pip.conf
+  template: src=pip.conf dest=/root/.pip/pip.conf
+
+- name: update pip
+  shell: pip install -U pip==9.0.1
+
+- name: pip install docker-composd
+  shell: pip install -U -i https://pypi.tuna.tsinghua.edu.cn/simple docker-compose
+
+###########################
+# INSTALL Docker
+###########################
+- name: install keyserver
+  shell: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+- name: install linux-image-extra
+  shell: sudo apt-get install linux-image-extra-$(uname -r)
+
+- name: copy docker-key
+  copy: src=docker-key dest=/tmp
+
+- name:  add docker-key
+  shell: sudo apt-key add /tmp/docker-key
+
+- name: add-apt-repository
+  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+- name: update docker cache
+  apt: update_cache=yes
+
+- name: install docker-ce
+  apt: name=docker-ce state=present force=yes
+

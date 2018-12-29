@@ -1,0 +1,5 @@
+---
+- hosts: total
+  user: root
+  roles:
+    - bond_net 

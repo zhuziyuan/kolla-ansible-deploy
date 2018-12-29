@@ -1,0 +1,15 @@
+---
+- import_tasks: control.yml
+  when: "'control' in group_names"
+  tags:
+    control
+
+- import_tasks: net.yml
+  when: "'network' in group_names"
+  tags:
+    net
+
+- import_tasks: compute.yml
+  when: "'compute' in group_names"
+  tags:
+    compute

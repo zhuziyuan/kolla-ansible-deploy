@@ -1,0 +1,55 @@
+# Mgmt network
+auto eth0
+iface eth0 inet manual
+bond-master bond0
+bond-primary bond0
+
+auto eth1
+iface eth1 inet manual
+bond-master bond0
+
+auto bond0
+iface bond0 inet static
+address {{ bond0 }}
+netmask 255.255.0.0
+gateway 10.2.254.254
+dns-nameservers 114.114.114.114 8.8.4.4
+bond-mode 1
+bond-miimon 100
+slaves none
+
+# Storage network
+auto eth4
+iface eth4 inet manual
+bond-master bond1
+bond-primary bond1
+
+auto eth5
+iface eth5 inet manual
+bond-master bond1
+
+auto bond1
+iface bond1 inet static
+address {{ bond1 }}
+netmask 255.255.0.0
+bond-mode 6
+bond-miimon 100
+bond-slaves p1p1 p1p2
+
+auto bond1:1
+iface bond1:1 inet static
+address {{ bond1_1 }}
+netmask 255.255.0.0
+
+auto bond1:2
+iface bond1:2 inet static
+address {{ bond1_2 }}
+netmask 255.255.0.0
+
+auto bond1:3
+iface bond1:3 inet static
+address { bond1_3 }
+netmask 255.255.0.0
+
+source /etc/network/interfaces.d/*.cfg
+

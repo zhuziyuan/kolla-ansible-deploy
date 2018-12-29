@@ -1,0 +1,28 @@
+[control]
+#10.2.67.1 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.1 bond1=172.20.67.1 bond1_1=172.27.67.1 bond1_2=172.28.67.1 bond1_3=172.29.67.1
+#10.2.67.2 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.2 bond1=172.20.67.2 bond1_1=172.27.67.2 bond1_2=172.28.67.2 bond1_3=172.29.67.2
+#10.2.67.3 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.3 bond1=172.20.67.3 bond1_1=172.27.67.3 bond1_2=172.28.67.3 bond1_3=172.29.67.3
+
+[network]
+#10.2.131.7 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.131.7 bond1=172.73.0.137
+#10.2.131.8 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.131.8 bond1=172.73.0.138
+
+[compute]
+#10.2.67.1 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.1 bond1=172.73.0.1 bond2=172.20.67.1 bond2_1=172.27.67.1 bond2_2=172.28.67.1 bond2_3=172.29.67.1
+#10.2.67.2 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.2 bond1=172.73.0.2 bond2=172.20.67.2 bond2_1=172.27.67.2 bond2_2=172.28.67.2 bond2_3=172.29.67.2
+#10.2.67.3 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.3 bond1=172.73.0.3 bond2=172.20.67.3 bond2_1=172.27.67.3 bond2_2=172.28.67.3 bond2_3=172.29.67.3
+#10.2.67.4 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.4 bond1=172.73.0.4 bond2=172.20.67.4 bond2_1=172.27.67.4 bond2_2=172.28.67.4 bond2_3=172.29.67.4
+#10.2.67.5 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.6 bond1=172.73.0.5 bond2=172.20.67.5 bond2_1=172.27.67.5 bond2_2=172.28.67.5 bond2_3=172.29.67.5
+#10.2.67.6 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.6 bond1=172.73.0.6 bond2=172.20.67.6 bond2_1=172.27.67.6 bond2_2=172.28.67.6 bond2_3=172.29.67.6
+#10.2.67.7 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.7 bond1=172.73.0.7 bond2=172.20.67.7 bond2_1=172.27.67.7 bond2_2=172.28.67.7 bond2_3=172.29.67.7
+#10.2.67.8 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.8 bond1=172.73.0.8 bond2=172.20.67.8 bond2_1=172.27.67.8 bond2_2=172.28.67.8 bond2_3=172.29.67.8
+#10.2.67.9 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.9 bond1=172.73.0.9 bond2=172.20.67.9 bond2_1=172.27.67.9 bond2_2=172.28.67.9 bond2_3=172.29.67.9
+#10.2.67.10 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.10 bond1=172.73.0.10 bond2=172.20.67.10 bond2_1=172.27.67.10 bond2_2=172.28.67.10 bond2_3=172.29.67.10
+#10.2.67.11 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.11 bond1=172.73.0.11 bond2=172.20.67.11 bond2_1=172.27.67.11 bond2_2=172.28.67.11 bond2_3=172.29.67.11
+#10.2.67.12 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 bond0=10.2.67.12 bond1=172.73.0.12 bond2=172.20.67.12 bond2_1=172.27.67.12 bond2_2=172.28.67.12 bond2_3=172.29.67.12
+
+
+[total:children]
+network
+control
+compute

@@ -1,0 +1,22 @@
+---
+- import_tasks: source-dns.yml
+
+- import_tasks: ntpserver-install.yml
+  when: inventory_hostname == "{{ groups['compute'][0] }}"
+
+- import_tasks: ntp-cron.yml
+  when: inventory_hostname in groups['compute'] and inventory_hostname != "{{ groups['compute'][0] }}"
+
+- import_tasks: raid.yml
+  when: inventory_hostname in groups['compute']
+
+- import_tasks: kolla-prepare.yml
+  when: inventory_hostname in groups['compute']
+  
+- import_tasks: optimize.yml
+
+- import_tasks: harbor-deploy.yml
+  when: inventory_hostname in groups['harbor']
+  tags:
+    - harbor-deploy
+#- import_tasks: del_ceph.yml

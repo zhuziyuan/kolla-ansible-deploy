@@ -1,0 +1,38 @@
+---
+- name: update neunn_localopenstack_release
+  template: src=local.list dest=/etc/apt/sources.list
+
+- name: update resolv.conf
+  shell: echo 'nameserver {{ dns_ip }}' > /etc/resolv.conf
+
+- name: update ali cache
+  apt: update_cache=yes
+  ignore_errors: true
+
+
+#######################
+#remove apparmor
+#######################
+#- name: apparmor install?
+#  shell: dpkg -s apparmor
+#  register: apparmor_installed
+#  failed_when: false
+#  tags:
+#    - test4
+#
+#- name: stop apparmor
+#  service: name=apparmor state=stopped
+#  when: apparmor_installed.rc ==  0
+#  tags:
+#    - test4
+#
+#- name: remove apparmor
+#  shell: update-rc.d -f apparmor remove
+#  when: apparmor_installed.rc == 0
+#  tags:
+#    - test4
+#- name: purge apparmor
+#  apt: name=apparmor state=absent purge=yes
+#  tags:
+#    - test4
+

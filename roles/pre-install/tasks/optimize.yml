@@ -1,0 +1,40 @@
+---
+#14.04版本的时候使用，现在是16.04不用这个了
+#- name: install new kernel
+#  apt: name={{ item }} state=present force=yes
+#  with_items:
+#    - "linux-headers-4.4.0-38"
+#    - "linux-headers-4.4.0-38-generic"
+#    - "linux-image-extra-4.4.0-38-generic"
+
+- name: copy deb package
+  copy: src=biosdevname_0.4.1-0ubuntu6.3_amd64.deb  dest=/tmp/
+
+- name: install biosdevname
+  command: dpkg -i /tmp/biosdevname_0.4.1-0ubuntu6.3_amd64.deb
+
+- name: update biosdevname grub
+  shell: sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
+
+- name: update kernel
+  command: update-grub
+
+- name: replace network interface
+  replace:
+    dest: /etc/network/interfaces
+    regexp: '{{ old_interface }}'
+    replace: 'eth0'
+    backup: yes
+
+- name: copy sysctl ulimit file
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'sysctl.conf', dest: '/etc/sysctl.conf' }
+    - { src: 'limits.conf', dest: '/etc/security/limits.conf' }
+
+- name: update sysctl
+  command: sysctl -p
+
+- name: reboot
+  shell: reboot
+

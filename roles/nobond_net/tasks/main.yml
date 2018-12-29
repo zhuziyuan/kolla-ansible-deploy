@@ -1,0 +1,15 @@
+---
+  - name: copy control_node network
+    template: src=nobond_control1 dest=/etc/network/interfaces
+    when: inventory_hostname in groups['control']
+
+    #  - name: copy net_node network
+    #    template: src=nobond_network dest=/etc/network/interfaces
+    #    when: inventory_hostname in groups['network']
+ 
+  - name: copy compute_node network
+    template: src=nobond_compute dest=/etc/network/interfaces
+    when: inventory_hostname in groups['compute']
+  
+  - name: reboot system
+    shell: reboot 

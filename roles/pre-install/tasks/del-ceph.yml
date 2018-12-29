@@ -1,0 +1,29 @@
+---
+- name: rm ceph osd docker
+  shell: docker rm -f ceph-osd-{{ ansible_hostname  }}-devsd{{ item }}
+  with_items:
+    - b
+    - c
+    - d
+    - e
+    - f
+    - g
+  tags:
+    - parted2017
+
+- name: format disk
+  shell: parted {{ item }} rm 1 && parted {{ item }} rm 2
+  with_items:
+    - /dev/sdb
+    - /dev/sdc
+    - /dev/sdd
+    - /dev/sde
+    - /dev/sdf
+    - /dev/sdg
+  tags:
+    - parted2017
+
+- name: rm /etc/ceph
+  shell: rm -rf /etc/ceph/* && rm -rf /var/lib/ceph/*
+  tags:
+    - parted2017 

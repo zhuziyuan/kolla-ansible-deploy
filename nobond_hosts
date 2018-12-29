@@ -1,0 +1,22 @@
+[control]
+#10.2.67.1 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.101 eth1=172.72.111.1 eth4=172.20.3.101 eth4_1=172.27.3.101 eth4_2=172.28.3.101 eth4_3=172.29.3.101
+#10.2.67.2 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.102 eth1=172.72.111.2 eth4=172.20.3.102 eth4_1=172.27.3.102 eth4_2=172.28.3.102 eth4_3=172.29.3.102
+#10.2.67.3 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.103 eth1=172.72.111.3 eth4=172.20.3.103 eth4_1=172.27.3.103 eth4_2=172.28.3.103 eth4_3=172.29.3.103
+
+[network]
+#10.2.131. ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.4 eth1=172.72.100.4
+#10.2.67.5 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.5 eth1=172.72.100.5
+
+[compute]
+#10.2.67.104 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.104 eth1=172.72.111.4 eth4=172.20.3.104 eth4_1=172.27.3.104 eth4_2=172.28.3.104 eth4_3=172.29.3.104
+#10.2.67.105 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.105 eth1=172.72.111.5 eth4=172.20.3.105 eth4_1=172.27.3.105 eth4_2=172.28.3.105 eth4_3=172.29.3.105
+#10.2.67.106 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.106 eth1=172.72.111.6 eth4=172.20.3.106 eth4_1=172.27.3.106 eth4_2=172.28.3.106 eth4_3=172.29.3.106
+#10.2.67.107 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.107 eth1=172.72.111.7 eth4=172.20.3.107 eth4_1=172.27.3.107 eth4_2=172.28.3.107 eth4_3=172.29.3.107
+#10.2.67.108 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.108 eth1=172.72.111.8 eth4=172.20.3.108 eth4_1=172.27.3.108 eth4_2=172.28.3.108 eth4_3=172.29.3.108
+#10.2.67.109 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.109 eth1=172.72.111.9 eth4=172.20.3.109 eth4_1=172.27.3.109 eth4_2=172.28.3.109 eth4_3=172.29.3.109
+#10.2.67.110 ansible_ssh_user=root ansible_ssh_pass=Neunn2016 eth0=10.2.67.110 eth1=172.72.111.10 eth4=172.20.3.110 eth4_1=172.27.3.110 eth4_2=172.28.3.110 eth4_3=172.29.3.110
+
+[total:children]
+network
+control
+compute

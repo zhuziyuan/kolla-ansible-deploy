@@ -1,0 +1,21 @@
+# Mgmt network
+auto p13p1
+iface p13p1 inet static
+address {{ p13p1 }}
+netmask 255.255.248.0
+gateway 10.33.71.254
+#dns-nameservers 114.114.114.114 8.8.4.4
+dns-nameservers 218.25.103.242
+
+# Private network
+auto p17p1
+iface p17p1 inet static
+address {{ p17p1 }}
+netmask 255.255.255.0
+
+
+# externel network
+auto p17p2
+iface p17p2 inet manual
+
+source /etc/network/interfaces.d/*.cfg

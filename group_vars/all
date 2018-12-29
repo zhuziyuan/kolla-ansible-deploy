@@ -1,0 +1,15 @@
+---
+#source_dns
+local_source: 192.168.248.18:8800
+dns_ip: 10.25.0.151
+
+#ntp_server
+ntp_nodes: 10.2.75.1
+
+#docker
+harbor_ip: 10.2.8.238:28080
+
+#network
+old_interface: enp1s0f0 
+network: 10.2.0.0
+netmask: 255.255.0.0

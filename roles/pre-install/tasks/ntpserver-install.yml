@@ -1,0 +1,15 @@
+---
+- name: ntp install
+  apt: name={{ item }} state=present 
+  with_items:
+    - ntp
+    - ntpdate
+
+- name: config ntp server
+  template: src=ntp.conf dest=/etc/ntp.conf
+  
+- name: restart ntp server
+  service: name=ntp state=restarted enabled=yes
+
+- name: 时区调整
+  shell: cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime

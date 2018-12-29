@@ -1,0 +1,19 @@
+---
+- name: install bond module
+  apt: name=ifenslave state=present force=yes
+
+- name: change module
+  copy: src=modules dest=/etc/modules
+
+- name: change bond_compute.conf
+  copy: src=bond_compute.conf dest=/etc/modprobe.d/bond.conf
+
+- name: load bond
+  command: modprobe bonding
+
+- name: change interfaces
+  template: src=bond_compute dest=/etc/network/interfaces
+
+- name: reboot
+  command: reboot
+
